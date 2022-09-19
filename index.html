@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="jquery.infinitecarousel.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#slider').infiniteCarousel({
+                displayTime: 1000, //velocidad de cambio de fotos
+                textholderHeight: .17 //alto de barra transparente para el texto
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            //select all the a tag with name equal to modal
+            $('a[name=modal]').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+
+                //Get the A tag
+                var id = $(this).attr('href');
+
+                //Get the screen height and width
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+
+                //Set heigth and width to mask to fill up the whole screen
+                $('#mask').css({
+                    'width': maskWidth,
+                    'height': maskHeight
+                });
+
+                //transition effect		
+                $('#mask').fadeIn(500);
+                $('#mask').fadeTo("normal", 0.8);
+
+                //Get the window height and width
+                var winH = $(window).height();
+                var winW = $(window).width();
+
+                //Set the popup window to center
+                function centrar() {
+                    iz = (screen.width - document.body.clientWidth) / 2;
+                    de = (screen.height - document.body.clientHeight) / 2;
+                    moveTo(iz, de);
+                }
+
+                //transition effect
+                $(id).fadeIn(1000);
+
+            });
+
+            //if close button is clicked
+            $('.window .close').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+            //if mask is clicked
+            $('#mask').click(function () {
+                $(this).hide();
+                $('.window').hide();
+            });
+
+        });
+    </script>
+    <title>Materia prueba 2</title>
+    <style type="text/css">
+        /* comentarios
+                sin nada trabaja sobre etiquetas html
+                # = id --> <div id="">
+                . = class --> <div class="">
+        */
+        
+        body {
+            background: #ccc;
+            margin: 0% 0% 0% 0%;
+        }
+        
+        h1 {
+            width: 98%;
+            margin: 0% 1% 0% 1%;
+            text-align: justify;
+            color: #2a3888;
+        }
+        
+        #container {
+            width: 90%;
+            height: 1500px;
+            background: #fff;
+            border: 1px solid #333;
+            margin: 0% 5% 0% 5%;
+        }
+        
+        #header {
+            width: 100%;
+            height: 200px;
+            background: #fff;
+        }
+        
+        #menu {
+            width: 100%;
+            height: 60px;
+            background: #ccc;
+        }
+        
+        #main {
+            width: 100%;
+            height: 1100px;
+            background: #fff;
+        }
+        
+        #footer {
+            width: 100%;
+            height: 140px;
+            background: #444;
+        }
+        
+        #contenedor1 {
+            width: 98%;
+            height: 34%;
+            background: #ccc;
+            margin: 1% 1% 1% 1%;
+        }
+        
+        #contenedor2 {
+            width: 38%;
+            height: 64%;
+            float: left;
+            margin: 0% 1% 1% 1%;
+        }
+        
+        #imagencontenedor2 {
+            width: 98%;
+            float: left;
+            margin: 1% 1% 1% 1%;
+        }
+        
+        #contenedor3 {
+            width: 59%;
+            height: 31%;
+            margin: 0% 1% 1% 0%;
+            float: left;
+        }
+        
+        #contenedor4 {
+            width: 29%;
+            height: 32%;
+            margin: 0% 1% 0% 0%;
+            float: left;
+        }
+        
+        #contenedor5 {
+            width: 29%;
+            height: 32%;
+            background: #ccc;
+            margin: 0% 0% 1% 0%;
+            float: left;
+        }
+        
+        .imagen {
+            width: 98%;
+            margin: 0% 1% 0% 1%;
+        }
+        
+        .titulos {
+            font-size: 1.5em;
+            color: #2a3888;
+            margin: 0% 1% 0% 1%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: justify;
+        }
+
+        .button {
+            background-color: #999;
+            border: none;
+            color: #333;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 14px 15px;
+            padding: 10px 15px;
+            transition: 0.5s;
+        }
+
+        .button1 {
+            background-color: #0000ff;
+            color: #000;
+            border: 2px solid #000;
+        }
+
+        .button1:hover {
+            background-color: #2a3888;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header"></div>
+        <div id="menu">
+            <button class="button">Inicio</button>
+            <button class="button button1">Hover</button>
+            <a href="#" target="_self" class="button">Boton con etiqueta a</a>
+            <a href="#" target="_self" class="button button1">Boton con etiqueta a</a>
+        </div>
+        <div id="main">
+            <div id="contenedor1">
+                <div id="slider" style="color:#FFFFFF; float:left; ">
+                    <ul>
+                        <li><img alt='' src='img/7.png' width='1190' height='392' />
+                            <p class="Estilo1">Chimuelo</p>
+                        </li>
+                        <li><img alt='' src='img/1.jpg' width='1190' height='392' />
+                            <p class="Estilo1">Gooooooooooooooooooooool</p>
+                        </li>
+                
+                        <li><img alt='' src='img/3.jpg' width='1190' height='392' />
+                            <p class="Estilo1">Gooooooooooooooooooooool</p>
+                        </li>
+                        <li><img alt='' src='img/4.jpg' width='1190' height='392' />
+                            <p class="Estilo1"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contenedor2">
+
+                <div class="titulos"> <b>realidad de La Moneda versus la de la opinión pública: encuesta Pulso Ciudadano revela que 68,8% considera que Chile vive peor crisis política desde retorno a la democracia</b></div>
+                <div id=imagencontenedor2>
+                    <img src="img/Aton_505859-1-700x467.jpg" width="100%">
+                </div>
+            </div>
+
+            <div id="contenedor3">
+                <div class="titulos"> Campeonato Nacional fecha 6: la patrulla juvenil de Colo Colo fue goleada por Ñublense y Melipilla sorprendió a una alicaída Universidad Católica</div>
+                <div class="imagen">
+                    <img src="img/PS_506150-700x467.jpg" width="40%">
+                </div>
+            </div>
+            <div id="contenedor4">
+                <div class="titulos"> Lanzan manual de uso de antimicrobianos en animales pequeños</div>
+                <div class="imagen">
+                    <img src="img/mascotas123456-700x394.png" width="100%">
+
+                </div>
+            </div>
+            <div id="contenedor5">
+
+            </div>
+
+
+
+
+
+        </div>
+        <div id="footer"></div>
+
+
+
+
+
+    </div>
+</body>
+
+</html>
